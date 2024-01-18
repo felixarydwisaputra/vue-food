@@ -2,17 +2,17 @@
   <div class="container my-5">
     <div class="row my-5 justify-content-center">
       <h1 class="text-center">All Menu</h1>
-      <div class="col-3 mt-4" v-for="(kategori, i) in categories">
+      <RouterLink class="col-3 mt-4" v-for="(kategori, i) in categories" :to=" '/foods/' + kategori">
         <div class="card" style="width: 100%">
           <img :src="'https://picsum.photos/70' + i + '/301'  " class="w-100" alt="">
           <p class="categories text-white">{{ kategori }}</p>
         </div>
-      </div>
+      </RouterLink>
     </div>
 
     <div class="row justify-content-center">
-      <div class="col-4 d-flex justify-content-center mt-4"  v-for="item in menu">
-        <Card :product="item"/>
+      <div class="col-4 d-flex justify-content-center mt-4"  v-for="item in allProducts">
+        <Card :product="item" :rating="item.rating"/>
       </div>      
     </div>
   </div>
@@ -22,26 +22,42 @@
 
 
 <script>
+  import { RouterLink, RouterView } from 'vue-router'
   import Card from '../components/Card.vue'
   import Footer from '../components/Footer.vue'
-
+  import axios from 'axios'
+  
   export default{
     components: {
-      Card,
-      Footer,
-    },
+    Card,
+    Footer,
+    RouterLink,
+    RouterView
+},
     data(){
       return{
-        categories: ["Foods","Drinks","Desserts","Ice Cream"],
-        menu:[
-          {id:1},
-          {id:2},
-          {id:3},
-          {id:4},
-          {id:5},
-          {id:6},
-        ]
+        categories: ["makanan","minuman","dessert","ice cream"],
+        allProducts: [],
+        productkate: [],
       }
+    },
+    methods:{
+      getAllData(){
+        axios.get('http://localhost:3000/products')
+        .then(res => this.allProducts = res.data)
+        .catch(err => console.log(err))
+      },
+      kategori(kate){
+        this.allProducts.filter(item => {
+          if(item.kategori == kate){
+            this.productkate = item
+          }
+          
+        })
+      }
+    },
+    created(){
+      this.getAllData()
     }
   }
 </script>

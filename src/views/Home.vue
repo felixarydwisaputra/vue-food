@@ -5,7 +5,7 @@
     <div class="container">
       <h1>Favorite Menu</h1>
       <div class="row justify-content-center my-5">
-        <div class="col-md-3 mt-4" v-for="item in fav">
+        <div class="col-md-3 mt-4" v-for="item in products">
           <Card :product="item"/>
         </div>
       </div>
@@ -19,6 +19,7 @@
   import Hero from '../components/Hero.vue'
   import Card from '../components/Card.vue'
   import Footer from '../components/Footer.vue'
+  import axios from 'axios'
 
   export default{
     components: {
@@ -28,15 +29,18 @@
     },
     data(){
       return{
-        fav:[
-          {id:1},
-          {id:2},
-          {id:3},
-          {id:4},
-          {id:5},
-          {id:6},
-        ]
+        products:[]
       }
-    }
+    },
+    methods:{
+      getBestData(){
+        axios.get('http://localhost:3000/best-products')
+        .then(res => this.products = res.data)
+        .catch(err => console.log(err))
+      }
+    },
+    created(){
+      this.getBestData()
+    },
   }
 </script>
