@@ -22,7 +22,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Favorite <i class="bi bi-heart ms-1"></i></a></li>
-              <li><a class="dropdown-item" href="#">Keranjang <i class="bi bi-cart-check ms-1"></i></a></li>
+              <li><RouterLink class="dropdown-item" to="/keranjang">Keranjang <i class="bi bi-cart-check ms-1"></i></RouterLink></li>
             </ul>
           </li>
         </div>

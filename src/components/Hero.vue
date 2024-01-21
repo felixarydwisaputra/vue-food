@@ -12,3 +12,17 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+  .container .row .btn:hover i{
+    transition: .4s ease-in-out;
+    -webkit-transition: .4s ease-in-out;
+    -moz-transition: .4s ease-in-out;
+    -ms-transition: .4s ease-in-out;
+    -o-transition: .4s ease-in-out;
+  }
+
+  .container .row .btn:hover i{
+    margin-left: 10px;
+  }
+</style>

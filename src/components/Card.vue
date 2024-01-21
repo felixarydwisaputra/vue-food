@@ -19,8 +19,7 @@
       <h5 class="card-title">{{ product.nama }}</h5>
       <p>Rp {{ product.harga }}</p>
       <p class="card-text">Some quick example text to build</p>
-      <a href="#" class="btn btn-warning">Pesan</a>
-      <a href="#" class="btn btn-outline-dark ms-2">Keranjang</a>
+      <RouterLink :to="'/foods/' + product.id " class="btn btn-warning w-50">Pesan</RouterLink>
     </div>
   </div>
 </template>
@@ -40,6 +39,10 @@
 </script>
 
 <style scoped>
+  .card{
+    overflow: hidden;
+  }
+
   .card img{
     transition: .4s;
   }

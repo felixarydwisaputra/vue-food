@@ -32,9 +32,6 @@
           {id:1, name: "MCDonald"},
           {id:2, name: "KFC"},
           {id:3, name: "JagoFood"},
-          {id:4, name: "Warung Podjok"},
-          {id:5, name: "Warung Tepi Sawah"},
-          {id:6, name: "Warung Bu Budi"},
         ]
       }
     }
@@ -57,7 +54,7 @@
 
   .container .card img{
     transition: 1s;
-    opacity: .7;
+    opacity: .9;
   }
   
   .container .card:hover img{
